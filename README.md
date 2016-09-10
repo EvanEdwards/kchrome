@@ -2,6 +2,10 @@
 
 A simple bash script, with google-chrome and xdotool dependencies.  It alters Chrome App desktop files to use itself so that proper App icons appear on the KDE Desktop environment, especially KDE Plasma 5 where the Chrome icons do not display correctly on the Task Manager once launched.
 
+![Before](https://evanedwards.github.io/kchrome/image/Before.png) ![After](https://evanedwards.github.io/kchrome/image/After.png)
+
+**Before and After:** The left is what you have.  The right is what you want.
+
 
 ## The problem
 
