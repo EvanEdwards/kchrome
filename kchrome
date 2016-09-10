@@ -1,7 +1,8 @@
 #!/bin/bash
 
+shopt -s globstar
 
-if [ ! -f "$1" ] # Also covers --help
+if [ ! "$1" ] || [ "${1:0:1}" == "-" ]
 then
   echo 'Usage: kchrome FILE[...] | APPID
 Launch a Chrome Application with modified options so that the correct icon
@@ -36,6 +37,7 @@ convertDesktop()
   echo "done."
 }
 
+echo "$1"
 
 if ( echo "$1" |grep -q 'desktop$' )
 then
@@ -52,6 +54,11 @@ fi
 APPID="$1"
 CRXID="crx_$APPID"
 
+if [ "$( echo "$APPID" |wc -c)" != "33" ]
+then
+  echo "Error: That does not appear to be a Chrome App ID.  And it's not a file.  Exiting."
+  exit
+fi
+
 /opt/google/chrome/google-chrome --profile-directory=Default --app-id="$APPID" \
   && xdotool search --sync --classname "$CRXID" set_window --class "$CRXID"
-
