@@ -1,0 +1,57 @@
+#!/bin/bash
+
+
+if [ ! -f "$1" ] # Also covers --help
+then
+  echo 'Usage: kchrome FILE[...] | APPID
+Launch a Chrome Application with modified options so that the correct icon
+appears in KDE.  If one or more .desktop files are given, convert them so they
+use kchrome rather than launching directly.
+
+It will attempt to skip non-chrome desktop files, and specifically can be run
+twice on the same file without any additional changes.
+
+Examples:
+
+  kchrome ~/.local/share/applications/*.desktop 
+    Fixes all Google Chrome Apps to use their icons (should backup!)
+    
+  kchrome pjkljhegncpnkpknbcohdijeoejaedia
+    Launches the application with the ID given (Gmail) if it is installed
+    on your Chrome installation.
+    
+Copyright 2016 Evan "JabberWokky" Edwards
+Licensed under MIT License - https://github.com/EvanEdwards/kchrome
+'
+  exit
+fi
+
+convertDesktop()
+{
+  grep -q '^Exec=/.*/google-chrome.*--app-id=.*' "$1" || return
+  echo -n "Converting "$1"... "
+  TEMPFILE="$(mktemp -p . 000.kchrometemp.XXXXXX)"
+  sed 's/^Exec=\/.*\/google-chrome.*--app-id=\(.*\)/Exec=kchrome \1\n#&/' <"$1" >"$TEMPFILE"
+  mv "$TEMPFILE" "$1"
+  echo "done."
+}
+
+
+if ( echo "$1" |grep -q 'desktop$' )
+then
+  while [ -f "$1" ]
+  do
+    convertDesktop "$1"
+    shift
+  done
+  echo 'Converted all valid desktop files given.'
+  exit
+fi
+
+
+APPID="$1"
+CRXID="crx_$APPID"
+
+/opt/google/chrome/google-chrome --profile-directory=Default --app-id="$APPID" \
+  && xdotool search --sync --classname "$CRXID" set_window --class "$CRXID"
+
