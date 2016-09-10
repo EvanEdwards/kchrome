@@ -21,7 +21,7 @@ kchrome both acts as a launcher and also alters the desktop files (trying to onl
 
 You need Google Chrome and xdotool installed.  Google Chrome sometimes is installed in wacky places.  I assume you have it in /opt/google/chrome/google-chrome.  If you don't, edit the last lines of kchrome to point to it.  And if it moves, don't worry - you won't have to update your desktop files again, just kchrome.
 
-As for the cat, well... my wife is a quantum chemist, so the results are still both good and bad for the cat.  Will update with that waveform collapses.
+As for the cat, well... my wife is a quantum chemist, so the results are still both good and bad for the cat.  Will update when that waveform collapses.
 
 
 ## Usage
