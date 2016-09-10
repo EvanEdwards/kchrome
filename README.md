@@ -1,6 +1,6 @@
 # kchrome
 
-A simple bash script, with google-chrome and xdotool dependencies.  It alters Chrome App desktop files to use itself so that proper App icons appear on the KDE Desktop environment, especially KDE Plasma 5 where the Chrome icons do not display correctly.
+A simple bash script, with google-chrome and xdotool dependencies.  It alters Chrome App desktop files to use itself so that proper App icons appear on the KDE Desktop environment, especially KDE Plasma 5 where the Chrome icons do not display correctly on the Task Manager once launched.
 
 
 ## The problem
@@ -14,7 +14,7 @@ Google Chrome applications launch up nicely with their icon (in most desktops). 
 
 By altering the commandline to fire off a quick xdotool command right after the Chrome App launches, you can adjust the X window class so KDE can recognize the app and have a happy desktop.  However, hand editing these would be a pain in the butt.  Especially since one of the nice things about Google Chrome is the ease of moving from system to system and quickly installing new apps.
 
-kchrome both acts as a launcher and also alters the desktop files (trying to only alter original Chrome App desktop files) to use itself rather than launching Google Chrome directly.  Suddenly your desktop is full of distinct icons and you can find Plex or Google Music and turn it down when your spouse walks in asking about the cat.  When that happens and you don't have a cat, the solution is beyond the scope of this little utility.
+kchrome both acts as a launcher and also alters the desktop files (trying to only alter original Chrome App desktop files) to use itself rather than launching Google Chrome directly.  Suddenly your Task Manager is full of distinct icons and you can find Plex or Google Music and turn it down when your spouse walks in asking about the cat.  When that happens and you don't have a cat, the solution is beyond the scope of this little utility.
 
 
 ## Gotchas
