@@ -4,7 +4,7 @@ A simple bash script, with google-chrome and xdotool dependencies.  It alters Ch
 
 ![Before](https://evanedwards.github.io/kchrome/image/Before.png) ![After](https://evanedwards.github.io/kchrome/image/After.png)
 
-**Before and After:** The left is what you have.  The right is what you want.
+**Before and After:** The left is what you have.  The right is what you want.  (Note that the image reflects an older version of Chrome that used low resolution icons.  The icons for current releases are nice, high resolution, and sharp looking!)
 
 
 ## The problem
